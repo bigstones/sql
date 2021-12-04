@@ -1,0 +1,10 @@
+--컬럼명 및 sum 정의
+SELECT b.ID, b.NAME, sum(a.PRICE) AS PRICE
+--여러 테이블을 한번에 조회
+FROM SCHEDULES a ,PLACES b
+--여기 Where 문에서 조인이 되는거
+WHERE b.ID = a.PLACE_ID
+--여러 조건을 넣는다
+AND a.SCHEDULED_AT BETWEEN "2019-01-15 00:00:00" AND "2019-01-17 00:00:00"
+GROUP BY a.PLACE_ID
+HAVING COUNT(a.SCHEDULED_AT) > 2
